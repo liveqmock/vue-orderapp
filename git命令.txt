@@ -1,0 +1,129 @@
+1、错误：failed to push some refs to .....
+
+解决：
+
+先git pull --rebase origin master
+
+然后git push -u origin master
+2、remote origin already exists 错误解决办法
+最后找到解决办法如下： 
+1、先删除远程 git 仓库
+
+$ git remote rm origin
+2、再添加远程 Git 仓库
+
+$ git remote add origin git@github.com:FBing/Java-code-generator
+如果执行 git remote rm origin 报错的话，我们可以手动修改gitconfig文件的内容
+
+$ vi .git/config
+
+把 [remote “origin”] 那一行删掉就好了。
+
+
+--git一些常用命令
+使用场景一：下载某个地址上的仓库
+1.git init 
+2. git clone url
+
+
+url = https://mlkj:6796417lp@github.com/mlkj/Echarts-VUX.git
+
+使用场景二  如果项目修改了 上传到远程仓库
+1. git add .
+2. git commit -m "测试提交"
+3. git remote add origin url  指定远程仓库(如果之前指定过地址了跳过本次)
+4. git push -u origin master  提交至远程仓库
+git push origin master
+如果出错
+git 告诉你 远程有最新的代码 你并没有获取到
+
+ 首先第一步  1. git fetch origin 
+第二步 2.git pull  origin master
+
+或者（$ git checkout gh-pages（将master分支切换到gh-pages分支上））
+
+
+
+使用场景三：如果项目上的代码有其他人更新过 自己的代码也修改了，代码要更新到本地的话使用下面方法
+
+1.   git remote -v查看远程代码版本
+      origin  git@github.com:username/Animations.git (fetch)
+      origin  git@github.com:username/Animations.git (push)
+
+
+2. git fetch origin master:temp 想远程仓库代码下载到缓存分支
+3. git diff temp  比较两个版本
+4. git merge temp 合并tem分支到master分支
+--allow-unrelated-histories  强制合并
+  合并冲突时{   1.按键盘字母 i 进入insert模式
+		2.修改最上面那行黄色合并信息,可以不修改
+		3.按键盘左上角"Esc"
+		4.输入":wq",注意是冒号+wq,按回车键即可
+
+	     }
+5. git branch -d temp 删除temp分支
+
+使用场景四：
+提交本地代码时，服务器端代码修改的情形
+ 如果服务端有冲突 先把服务端下载到本地分支 合并 之后再上传。
+
+
+使用场景五
+创建一个新的仓库
+
+git init 初始化仓库
+git add . 添加到暂存区
+git commit -m "first commit"  提交到仓库
+git remote add origin url  指定远程仓库 https://github.com/step-city/v-charts.git
+git push -u origin master  提交至远程仓库
+
+或者
+echo "# YLVUX" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/step-city/YLVUX.git
+git push -u origin master
+
+发布到github上面
+1、切换到gh-pages分支 git checkout -b gh-pages
+2、执行 npm run build 命令，构建代码
+3、将dist目录下的所有文件夹推送至远程仓库的gh-pages分支，执行以下命令：
+# 强制添加dist文件夹，因为.gitignore文件中定义了忽略该文件
+git add -f dist
+
+# 提交到本地暂存区
+git commit -m 'Initial the page of project'
+
+# 部署dist目录下的代码
+git subtree push --prefix dist origin gh-pages
+
+
+
+删除keys值ssh-keygen -t rsa -C 1652613790@qq.com
+
+一、git本地仓库首次push到远程仓库出现错误 ! [rejected] master -> master (fetch first)
+解决很简单，使用强制推送
+
+使用下面的命令
+
+git push -f origin master 
+
+
+二、增加多个远程地址
+首先，先增加第一个地址 git remote add origin <url1>
+然后增加第二个地址 git remote set-url --add origin <url2>
+增加第三个地址 git remote set-url --add origin <url3>
+....依次类推
+ 以后只要使用git push origin master 就可以一次性push到3各库里面了(使用git push也可)
+
+三、如果报the Requset 403错误
+git init
+git add . 添加到暂存区
+git commit -m "first commit"  提交到仓库
+git remote set-url  origin <url>
+
+然后使用下面的命令，强制推送
+git push -f origin master
+
+git push -u origin master

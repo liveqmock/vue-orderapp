@@ -3,7 +3,7 @@
 <hr>
 演示地址：http://vuejssellapp.t.imooc.io/#!/
 
-![演示.png](http://upload-images.jianshu.io/upload_images/4670483-9a21e2ae16ea6ac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![演示.png](//qr.api.cli.im/qr?data=http%253A%252F%252Fvuejssellapp.t.imooc.io%252F%2523%2521%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=ee189439dbd7c10b629629edcc4a0ab9)
 
 <hr>
 ##依赖工具：
@@ -24,6 +24,8 @@
 
 2、运行命令：
 > $ npm run dev
+
+打开浏览器输入localhost:8080看效果。
 
 3、发布代码：
 > $ npm run build
