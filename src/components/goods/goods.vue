@@ -3,7 +3,7 @@
     <div class="goods">
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
-          <li v-for="(item,index) in goods" class="menu-item"
+          <li v-for="(item,index) in goods" class="menu-item" :key="index"
               :class="{'current':currentIndex === index}" @click="selectMenu(index,$event)">
           <span class="text border-1px" >
             <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
@@ -13,10 +13,10 @@
       </div>
       <div class="foods-wrapper" ref="foodsWrapper">
         <ul>
-          <li v-for="item in goods" class="food-list food-list-hook">
+          <li v-for="item in goods" class="food-list food-list-hook" :key="item.id">
             <h1 class="title">{{item.name}}</h1>
             <ul>
-              <li @click="selectFood(food,$event)" v-for="food in item.foods" class="food-item border-1px">
+              <li @click="selectFood(food,$event)" v-for="food in item.foods" :key="food.id" class="food-item border-1px">
                 <div class="icon">
                   <img :src="food.icon" width="57" height="57">
                 </div>
@@ -119,17 +119,17 @@
       //左右连动映射
       selectMenu(index, event) {
         //自己开发的event._constructed是为true,pc浏览器没有此事件
-        if (!event._constructed) {
-          return;
-        }
+        // if (!event._constructed) {
+        //   return;
+        // }
         let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
         let el = foodList[index];
         this.foodsScroll.scrollToElement(el, 300);
       },
       selectFood(food, event) {
-        if (!event._constructed) {
-          return;
-        }
+        // if (!event._constructed) {
+        //   return;
+        // }
         this.selectedFood = food;
         this.$refs.food.show();
       },

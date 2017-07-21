@@ -61,15 +61,15 @@
     },
     methods: {
       select(type, event) {
-        if (!event._constructed) {
-          return;
-        }
+        // if (!event._constructed) {
+        //   return;
+        // }
         this.$emit('selecttype', type);
       },
       toggleContent(event) {
-        if (!event._constructed) {
-          return;
-        }
+        // if (!event._constructed) {
+        //   return;
+        // }
         this.$emit('content');
       }
     }

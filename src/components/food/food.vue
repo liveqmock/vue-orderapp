@@ -39,7 +39,7 @@
           @selecttype="setType" @content="setOnlycontent"></ratingselect>
           <div class="rating-wrapper">
             <ul v-show="food.ratings && food.ratings.length">
-              <li v-show="needShow(rating.rateType,rating.text)" v-for="rating in food.ratings"
+              <li v-show="needShow(rating.rateType,rating.text)" v-for="rating in food.ratings" :key="rating.id"
                   class="rating-item border-1px">
                 <div class="user">
                   <span class="name">{{rating.username}}</span>
@@ -121,9 +121,9 @@
         this.showFlag = false;
       },
       addFirst(event) {
-        if (!event._constructed) {
-          return;
-        }
+        // if (!event._constructed) {
+        //   return;
+        // }
         this.$emit('add', event.target);
         Vue.set(this.food, 'count', 1);
       },
