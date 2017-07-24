@@ -121,9 +121,9 @@
         this.showFlag = false;
       },
       addFirst(event) {
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         this.$emit('add', event.target);
         Vue.set(this.food, 'count', 1);
       },

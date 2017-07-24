@@ -119,17 +119,17 @@
       //左右连动映射
       selectMenu(index, event) {
         //自己开发的event._constructed是为true,pc浏览器没有此事件
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
         let el = foodList[index];
         this.foodsScroll.scrollToElement(el, 300);
       },
       selectFood(food, event) {
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         this.selectedFood = food;
         this.$refs.food.show();
       },

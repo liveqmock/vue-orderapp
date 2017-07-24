@@ -22,9 +22,9 @@
     methods: {
       //修改数据goods=>foods=>food的count，映射到原始数据中
       addCart(event) {
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         if (!this.food.count) { //如果没有count属性，则设置为1
           Vue.set(this.food, 'count', 1);
         } else {
@@ -34,9 +34,9 @@
         this.$emit('event', event.target);
       },
       decreaseCart(event) {
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         if (this.food.count) {
           this.food.count--;
         }

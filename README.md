@@ -3,7 +3,7 @@
 <hr>
 演示地址：http://vuejssellapp.t.imooc.io/#!/
 
-![演示.png](//qr.api.cli.im/qr?data=http%253A%252F%252Fvuejssellapp.t.imooc.io%252F%2523%2521%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=ee189439dbd7c10b629629edcc4a0ab9)
+![演示.png](http://qr.api.cli.im/qr?data=http%253A%252F%252Fvuejssellapp.t.imooc.io%252F%2523%2521%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=ee189439dbd7c10b629629edcc4a0ab9)
 
 <hr>
 ##依赖工具：

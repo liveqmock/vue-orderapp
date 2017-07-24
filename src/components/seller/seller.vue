@@ -114,9 +114,9 @@
     },
     methods: {
       toggleFavorite(event) {
-        // if (!event._constructed) {
-        //   return;
-        // }
+        if (!event._constructed) {
+          return;
+        }
         this.favorite = !this.favorite;
         //存储favorate数据
         saveToLocal(this.seller.id, 'favorite', this.favorite);
