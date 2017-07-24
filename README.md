@@ -16,6 +16,9 @@
 - webpack
 
 <hr>
+##better-scroll插件初使用：
+
+https://github.com/ustbhuangyi/better-scroll
 
 ##安装：
 

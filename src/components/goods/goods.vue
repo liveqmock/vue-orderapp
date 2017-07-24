@@ -73,8 +73,10 @@
     computed: {
       currentIndex() {
         for (let i = 0; i < this.listHeight.length; i++) {
+          //判断当currentIndex在height1和height2之间的时候显示
           let height1 = this.listHeight[i];
           let height2 = this.listHeight[i + 1];//listHeight[length]返回undefined,所以可以用!height2做判断不是最后一个
+           //最后一个区间没有height2
           if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
             return i;
           }
@@ -105,6 +107,7 @@
           //数据发生变化后，不能直接更新在dom上，需要在回调函数中刷新DOM,即异步加载DOM
           this.$nextTick(() => {
             this._initScroll();
+            //计算高度
             this._calculateHeight();
           });
         }
@@ -118,11 +121,13 @@
       },
       //左右连动映射
       selectMenu(index, event) {
-        //自己开发的event._constructed是为true,pc浏览器没有此事件
+        //自己默认派发事件时候(BScroll),event._constructed是为true,pc浏览器没有此事件
         if (!event._constructed) {
           return;
         }
+        //运用BScroll接口，滚动到相应位置
         let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
+        //获取对应元素的列表
         let el = foodList[index];
         this.foodsScroll.scrollToElement(el, 300);
       },
@@ -140,16 +145,21 @@
         });
         this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
           click: true, //取消默认阻止事件
+          //探针作用，实时监测滚动位置
           probeType: 3   //监听事件的触发时间，1为即时触发，3为延迟到事件完毕后触发
         });
+        //设置监听滚动位置
         this.foodsScroll.on('scroll', (pos) => {
+          //scrollY接收变量
           this.scrollY = Math.abs(Math.round(pos.y));
         });
       },
       _calculateHeight() {
         let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
         let height = 0;
+         //把第一个高度送入数组
         this.listHeight.push(height);
+        //通过循环foodList下的dom结构，将每一个li的高度依次送入数组
         for (let i = 0; i < foodList.length; i++) {
           //获取每个li的高度，放入一个数组中
           let item = foodList[i];
